@@ -6,6 +6,12 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
+        android:id="@+id/nav_horario"
+        android:name="com.example.jdatech.ui.horario.HorarioFragment"
+        android:label="@string/menu_horario"
+        tools:layout="@layout/horario_fragment" />
+
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.example.jdatech.ui.home.HomeFragment"
         android:label="@string/menu_home"
