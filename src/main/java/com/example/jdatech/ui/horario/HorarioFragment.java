@@ -3,11 +3,14 @@ package com.example.jdatech.ui.horario;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +23,8 @@ public class HorarioFragment extends Fragment {
 
     private HorarioViewModel myViewModel;
     private View thisView;
+    private RecyclerView recView;
+    private Context context;
 
     public static HorarioFragment newInstance() {
         return new HorarioFragment();
@@ -35,6 +40,8 @@ public class HorarioFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        //Setting up the ViewModel to be paired to the fragment
         myViewModel = ViewModelProviders.of(this).get(HorarioViewModel.class);
 
         final TextView textView = thisView.findViewById(R.id.textView);
@@ -44,6 +51,20 @@ public class HorarioFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        //Setting up the Recycler View
+        recView = thisView.findViewById(R.id.horario_recycler);
+
+        //Declaring its Layout Manager and Adapter
+        context = getActivity().getApplicationContext();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+
+        RecyclerView.Adapter myAdapter = new MyRecyclerViewAdapter(new String[]{"TEST", "TEST", "TEST"});
+        recView.setAdapter(myAdapter);
+        recView.setLayoutManager(layoutManager);
+
+
+
+
     }
 
 }
