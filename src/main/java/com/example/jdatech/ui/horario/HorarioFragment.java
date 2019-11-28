@@ -58,7 +58,7 @@ public class HorarioFragment extends Fragment {
         context = getActivity().getApplicationContext();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
 
-        RecyclerView.Adapter myAdapter = new MyRecyclerViewAdapter(new String[]{"TEST", "TEST", "TEST"});
+        RecyclerView.Adapter myAdapter = new MyRecyclerViewAdapter(context, new String[]{"TEST1", "TEST2", "TEST3"});
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(layoutManager);
 

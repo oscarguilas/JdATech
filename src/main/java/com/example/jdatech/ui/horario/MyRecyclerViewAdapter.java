@@ -1,5 +1,6 @@
 package com.example.jdatech.ui.horario;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyRecyclerViewAdapter(String[] myDataset) {
+    public MyRecyclerViewAdapter(Context context, String[] myDataset) {
         mDataset = myDataset;
     }
 
@@ -38,6 +39,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 .inflate(R.layout.horario_textview, parent, false);
 
         //TODO: Find how the layout needs to be/works
+        //https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
