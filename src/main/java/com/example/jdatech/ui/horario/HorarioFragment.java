@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,11 +57,16 @@ public class HorarioFragment extends Fragment {
 
         //Declaring its Layout Manager and Adapter
         context = getActivity().getApplicationContext();
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 
         RecyclerView.Adapter myAdapter = new MyRecyclerViewAdapter(context, new String[]{"TEST1", "TEST2", "TEST3"});
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recView.getContext(),
+                layoutManager.getOrientation());
+
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(layoutManager);
+        recView.addItemDecoration(dividerItemDecoration);
 
 
 

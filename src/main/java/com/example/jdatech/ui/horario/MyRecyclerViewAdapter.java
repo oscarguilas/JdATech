@@ -2,6 +2,7 @@ package com.example.jdatech.ui.horario;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import com.example.jdatech.R;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> {
     private String[] mDataset;
+    private LayoutInflater mInflater;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -18,15 +20,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView textView;
-        public MyViewHolder(TextView v) {
+        public MyViewHolder(View v) {
             super(v);
-            textView = v;
+            textView = v.findViewById(R.id.tvRecycler);
+
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyRecyclerViewAdapter(Context context, String[] myDataset) {
         mDataset = myDataset;
+        mInflater = LayoutInflater.from(context);
     }
 
     // Create new views (invoked by the layout manager)
@@ -35,13 +39,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                                                                  int viewType) {
 
         // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.horario_textview, parent, false);
+        View view = mInflater.inflate(R.layout.horario_textview, parent, false);
 
-        //TODO: Find how the layout needs to be/works
-        //https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
-
-        MyViewHolder vh = new MyViewHolder(v);
+        MyViewHolder vh = new MyViewHolder(view);
         return vh;
     }
 
@@ -50,7 +50,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.setText(mDataset[position]);
+        String content = mDataset[position];
+        holder.textView.setText(content);
 
     }
 
