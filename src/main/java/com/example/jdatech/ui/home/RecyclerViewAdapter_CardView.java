@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jdatech.R;
@@ -20,11 +22,12 @@ public class RecyclerViewAdapter_CardView extends RecyclerView.Adapter<RecyclerV
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView textView;
+        public TextView timeStart, timeFinish, note;
         public MyViewHolder(View v) {
             super(v);
-            textView = v.findViewById(R.id.tvRecycler);
-
+            timeStart = v.findViewById(R.id.timeStart);
+            timeFinish = v.findViewById(R.id.timeFinish);
+            note = v.findViewById(R.id.note);
         }
     }
 
@@ -40,7 +43,7 @@ public class RecyclerViewAdapter_CardView extends RecyclerView.Adapter<RecyclerV
                                                                  int viewType) {
 
         // create a new view
-        View view = mInflater.inflate(R.layout.horario_textview, parent, false);
+        View view = mInflater.inflate(R.layout.cardview_home, parent, false);
 
         MyViewHolder vh = new MyViewHolder(view);
         return vh;
