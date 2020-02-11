@@ -54,8 +54,12 @@ public class RecyclerViewAdapter_CardView extends RecyclerView.Adapter<RecyclerV
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        //String content = dataset[position];
-        //holder.textView.setText(content);
+
+        // Dataset should look like the following: "timeFinish,timeStart,note"
+        String[] content = dataset.get(position).split(",");
+        holder.timeFinish.setText(content[0]);
+        holder.timeStart.setText(content[1]);
+        holder.note.setText(content[2]);
 
     }
 
