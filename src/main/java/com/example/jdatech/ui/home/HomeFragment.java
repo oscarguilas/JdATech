@@ -1,5 +1,6 @@
 package com.example.jdatech.ui.home;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,10 +17,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jdatech.R;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
@@ -83,8 +88,28 @@ public class HomeFragment extends Fragment {
         dateText.setText(formatHourMinuteSecond(date));
         smallDateText.setText(formatDayMonthYear(date));
 
+        //Setting RecyclerView up
+        //
+        RecyclerView recView = root.findViewById(R.id.recyclerView);
+        Context context = getActivity().getApplicationContext();
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 
+        //-Get data
+        //Dummy data
+        ArrayList<String> content = new ArrayList<String>();
+        content.add("20:00,21:00,nota");
+        content.add("21:00,22:00,otra nota");
+        content.add("22:00,23:00,mas notas!");
+
+        RecyclerView.Adapter myAdapter = new RecyclerViewAdapter_CardView(context, content);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recView.getContext(),
+                layoutManager.getOrientation());
+
+        recView.setAdapter(myAdapter);
+        recView.setLayoutManager(layoutManager);
+        recView.addItemDecoration(dividerItemDecoration);
 
 
         return root;

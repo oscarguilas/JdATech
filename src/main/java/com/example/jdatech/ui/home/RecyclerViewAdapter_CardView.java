@@ -57,8 +57,8 @@ public class RecyclerViewAdapter_CardView extends RecyclerView.Adapter<RecyclerV
 
         // Dataset should look like the following: "timeFinish,timeStart,note"
         String[] content = dataset.get(position).split(",");
-        holder.timeFinish.setText(content[0]);
-        holder.timeStart.setText(content[1]);
+        holder.timeStart.setText(content[0]);
+        holder.timeFinish.setText(content[1]);
         holder.note.setText(content[2]);
 
     }

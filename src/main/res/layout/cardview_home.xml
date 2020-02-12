@@ -101,7 +101,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="<-note->"
+                android:text="note"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/timeStart" />
         </androidx.constraintlayout.widget.ConstraintLayout>
