@@ -102,11 +102,12 @@ public class HomeFragment extends Fragment {
         content.add("21:00,22:00,otra nota");
         content.add("22:00,23:00,mas notas!");
 
+        //Setting the adapter
         RecyclerView.Adapter myAdapter = new RecyclerViewAdapter_CardView(context, content);
-
+        //Setting an item divider, purely cosmetic
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recView.getContext(),
                 layoutManager.getOrientation());
-
+        //Putting everything in motion
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(layoutManager);
         recView.addItemDecoration(dividerItemDecoration);
