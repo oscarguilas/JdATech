@@ -23,10 +23,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jdatech.R;
 
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Properties;
 import java.util.TimeZone;
 
 public class HomeFragment extends Fragment {
@@ -96,12 +98,22 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 
         //-Get data
-        //Dummy data
         ArrayList<String> content = new ArrayList<String>();
-        content.add("20:00,21:00,nota");
-        content.add("21:00,22:00,otra nota");
-        content.add("22:00,23:00,mas notas!");
+        //Set this to 0 to use dummy data, 1 for server connection.
+        //Testing purposes only.
+        int datamode=0;
+        if(datamode==0) {//Dummy data
 
+            content.add("20:00,21:00,nota");
+            content.add("21:00,22:00,otra nota");
+            content.add("22:00,23:00,mas notas!");
+
+        } else if(datamode==1) {//Postgresql data
+            Connection connection = null;
+            Properties connectionProperties = new Properties();
+
+
+        }
         //Setting the adapter
         RecyclerView.Adapter myAdapter = new RecyclerViewAdapter_CardView(context, content);
         //Setting an item divider, purely cosmetic
